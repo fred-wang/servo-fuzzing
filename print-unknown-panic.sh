@@ -23,16 +23,13 @@ fi
 for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file \
     | sed -e "/Attempting to create a [0-9]\+x[0-9]\+ window\/document/,+3d" \
-    | sed -e "/Attr shouldn't appear here/,+3d" \
     | sed -e "/Blob ancestry should be only one level./,+3d" \
     | sed -e "/Cache should have been filled from traversal/,+3d" \
     | sed -e "/Failed to get browsing context info from constellation./,+3d" \
-    | sed -e "/Maybe your GL context version is too outdated./,+3d" \
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
-    | sed -e "/This blob doesn't have a parent./,+3d" \
     | sed -e "/Trying to get host from a detached shadow root/,+3d" \
-    | sed -e "/already mutably borrowed: BorrowError (thread Script([0-9]\+,[0-9]\+), at components\/script\/dom\/path2d.rs:[0-9]\+)/,+3d" \
+    | sed -e "/assertion failed: !GetCurrentRealmOrNull/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+canvas_context.rs:[0-9]\+)$/,+3d" \

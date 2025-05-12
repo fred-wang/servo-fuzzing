@@ -44,7 +44,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"element linking failed: BoolError/,+3d" \
     | sed -e "/error receiving hit test result: Disconnected/,+3d" \
     | sed -e "/failed to send message to system font service/,+3d" \
-    | sed -e "/out of bounds. \(Row\|Column\) must be less than [0-9]\+, but is [0-9]\+/,3d" \
+    | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+/,+3d" \
+    | sed -e "/out of bounds. \(Row\|Column\) must be less than [0-9]\+, but is [0-9]\+/,+3d" \
     | sed -e "/slice index starts at [0-9]\+ but ends at [0-9]\+/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \
     ;

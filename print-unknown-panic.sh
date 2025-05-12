@@ -28,6 +28,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Failed to get browsing context info from constellation./,+3d" \
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
+    | sed -e "/Too many open files/,+3d" \
     | sed -e "/Trying to get host from a detached shadow root/,+3d" \
     | sed -e "/assertion failed: !GetCurrentRealmOrNull/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
@@ -45,6 +46,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/error receiving hit test result: Disconnected/,+3d" \
     | sed -e "/failed to send message to system font service/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+/,+3d" \
+    | sed -e "/not yet implemented (.\+xpath\/eval.rs:[0-9]\+)$/,+3d" \
     | sed -e "/out of bounds. \(Row\|Column\) must be less than [0-9]\+, but is [0-9]\+/,+3d" \
     | sed -e "/slice index starts at [0-9]\+ but ends at [0-9]\+/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \

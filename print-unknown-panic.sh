@@ -10,9 +10,7 @@ fi
 # The panic messages are selected obtained by grepping around the pattern
 # "servoshell::panic_hook::panic_hook".
 #
-# Use sed -e '/message/, +3d' to delete already reported issues. You can find
-# the history of reported issues together with reduced testcases in the
-# minimized_testcases directory.
+# Use sed -e '/message/, +3d' to delete already reported issues.
 #
 # Notes:
 # - Use backslash to escape backtick and other special characters.
@@ -33,17 +31,17 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/assertion failed: !GetCurrentRealmOrNull/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
+    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/window.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+script\/canvas_context.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/size.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Disconnected (.\+canvas_state.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Parameter(ParameterError { kind: DimensionMismatch, underlying: None })/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: RecvError (.\+audio\/context.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"element linking failed: BoolError/,+3d" \
     | sed -e "/error receiving hit test result: Disconnected/,+3d" \
-    | sed -e "/failed to send message to system font service/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+/,+3d" \
     | sed -e "/not yet implemented (.\+xpath\/eval.rs:[0-9]\+)$/,+3d" \
     | sed -e "/out of bounds. \(Row\|Column\) must be less than [0-9]\+, but is [0-9]\+/,+3d" \

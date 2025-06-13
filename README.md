@@ -39,7 +39,7 @@ To run all the HTML files with Servo in headless mode and generate corresponding
 `.txt` output:
 
 ```
-./run-testcases.sh testcases/ ./path/to/servo [servo_args]
+./run-testcases.sh testcases/ ./path/to/servo [servo_extra_args]
 ```
 
 `--enable-experimental-web-platform-features` can be an interesting argument to

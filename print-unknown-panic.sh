@@ -34,6 +34,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/assertion failed: !GetCurrentRealmOrNull/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
+    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/documentorshadowroot.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/window.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \

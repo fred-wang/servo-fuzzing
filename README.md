@@ -62,7 +62,11 @@ or to narrow down a specific panic message:
 python3 -m lithium outputs -t1 -s 'my panic message' ./path/to/servo -xzf testcase.html
 ```
 
-There is also a script to help reduce non-deterministic testcase more quickly:
+There are also scripts to help reduce non-deterministic testcase more quickly:
+
+```
+python3 -m lithium outputs -t3 -s 'my panic message' ./repeat.sh ./path/to/servo -xzf testcase.html
+```
 
 ```
 python3 -m lithium outputs -t3 -s 'my panic message' ./parallelize.sh ./path/to/servo -xzf testcase.html

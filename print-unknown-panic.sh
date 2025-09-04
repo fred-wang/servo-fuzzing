@@ -24,8 +24,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Blob ancestry should be only one level./,+3d" \
     | sed -e "/Cache should have been filled from traversal/,+3d" \
     | sed -e "/Couldn't find common ancestor (.\+dom\/document.rs:[0-9]\+)/,+3d" \
-    | sed -e "/Failed to get browsing context info from constellation./,+3d" \
-    | sed -e "/Should always have a scroll tree node when querying bounding box./,+3d" \
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
     | sed -e "/Too many open files/,+3d" \

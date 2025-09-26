@@ -26,7 +26,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
     | sed -e "/Too many open files/,+3d" \
-    | sed -e "/Trying to get host from a detached shadow root/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
@@ -42,6 +41,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/shared\/compositing\/display_list.rs:[0-9]\+)$/,+3d" \
     | sed -e "/internal error: entered unreachable code (.\+webrender\/src\/picture.rs:[0-9]\+)$/,+3d" \
     | sed -e "/not yet implemented (.\+xpath\/eval.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/RefCell already borrowed (.\+script\/script_mutation_observers.rs:[0-9]\+)$/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \
     ;
     if [ $? -eq 0 ]; then

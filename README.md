@@ -26,7 +26,7 @@ python freedom/main.py -i 1 -m generate -n 100 -o testcases
 
 ```
 git clone git@github.com:ChijinZ/Minerva.git
-export MEM_DEP_JSON_PATH=$MINERVA_PATH/mod_ref_helper/mem_dep.json
+export MEM_DEP_JSON_PATH=Minerva/mod_ref_helper/mem_dep.json
 python Minerva/generator.py --output_dir testcases --no_of_files 100
 ```
 

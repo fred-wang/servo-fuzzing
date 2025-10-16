@@ -35,6 +35,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
+    | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Disconnected (.\+windowproxy.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: RecvError (.\+audio\/context.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"element linking failed: BoolError/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/layout\/table\/layout.rs:[0-9]\+)$/,+3d" \

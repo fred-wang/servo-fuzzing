@@ -23,7 +23,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Blob ancestry should be only one level./,+3d" \
     | sed -e "/Cache should have been filled from traversal/,+3d" \
     | sed -e "/Couldn't find common ancestor (.\+dom\/document.rs:[0-9]\+)/,+3d" \
-    | sed -e "/RefCell already borrowed (.\+components\/script\/dom\/html\/htmlmediaelement.rs:[0-9]\+)$/,+3d" \
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
     | sed -e "/Too many open files/,+3d" \
@@ -35,6 +34,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Disconnected (.\+windowproxy.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: RecvError (.\+audio\/context.rs:[0-9]\+)$/,+3d" \
@@ -44,6 +44,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/internal error: entered unreachable code (.\+components\/script\/dom\/range.rs:[0-9]\+)$/,+3d" \
     | sed -e "/internal error: entered unreachable code (.\+webrender\/src\/picture.rs:[0-9]\+)$/,+3d" \
     | sed -e "/not yet implemented (.\+xpath\/eval.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/out of bounds. Column must be less than [0-9]\+, but is [0-9]\+ (.\+grid-.\+lib.rs:[0-9]\+)$/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \
     ;
     if [ $? -eq 0 ]; then

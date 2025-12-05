@@ -22,14 +22,17 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file \
     | sed -e "/Blob ancestry should be only one level./,+3d" \
     | sed -e "/Cache should have been filled from traversal/,+3d" \
+    | sed -e "/Contexts must be destroyed explicitly with \`destroy_context\`!/,+3d" \
     | sed -e "/Couldn't find common ancestor (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/Sliced blobs should use create_sliced_url_id instead of promote./,+3d" \
     | sed -e "/SystemFontService has already exited./,+3d" \
     | sed -e "/Too many open files/,+3d" \
+    | sed -e "/Unknown top-level browsing context (.\+constellation\/constellation.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited()/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/documentorshadowroot.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/html\/htmloptionscollection.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/window.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \
@@ -39,8 +42,10 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Disconnected (.\+windowproxy.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Io(Os { code: 32, kind: BrokenPipe, message: \"Broken pipe\" }) (.\+components\/shared\/net\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: RecvError (.\+audio\/context.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: RecvError (.\+mediaelementaudiosourcenode.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"SendError(..)\" (.\+webrender\/src\/render_backend.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"element linking failed: BoolError/,+3d" \
+    | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+audio\/iir_filter_node.rs:[0-9]\+)$/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/layout\/table\/layout.rs:[0-9]\+)$/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/shared\/compositing\/display_list.rs:[0-9]\+)$/,+3d" \
     | sed -e "/internal error: entered unreachable code (.\+components\/script\/dom\/range.rs:[0-9]\+)$/,+3d" \

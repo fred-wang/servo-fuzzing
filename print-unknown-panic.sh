@@ -26,7 +26,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Too many open files/,+3d" \
     | sed -e "/Unknown top-level browsing context (.\+constellation\/constellation.rs:[0-9]\+)$/,+3d" \
     | sed -e "/already immutably borrowed (.\+atomic_refcell-[0-9]\+\.[0-9]\+\.[0-9]\+\/src\/lib.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/already mutably borrowed (.\+atomic_refcell-[0-9]\+\.[0-9]\+\.[0-9]\+\/src\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \

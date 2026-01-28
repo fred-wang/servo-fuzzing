@@ -28,7 +28,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/already immutably borrowed (.\+atomic_refcell-[0-9]\+\.[0-9]\+\.[0-9]\+\/src\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
-    | sed -e "/byte index [0-9]\+ is not a char boundary/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/documentorshadowroot.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/html\/htmloptionscollection.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/window.rs:[0-9]\+)$/,+3d" \

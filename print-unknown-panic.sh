@@ -33,7 +33,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl/webgl_thread.rs:[0-9]\+)/,+3d" \
+    | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Io(Os { code: 32, kind: BrokenPipe, message: \"Broken pipe\" }) (.\+components\/shared\/net\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"SendError(..)\" (.\+webrender\/src\/render_backend.rs:[0-9]\+)$/,+3d" \

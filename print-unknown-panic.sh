@@ -22,8 +22,10 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file \
     | sed -e "/Cache should have been filled from traversal/,+3d" \
     | sed -e "/Couldn't find common ancestor (.\+dom\/document.rs:[0-9]\+)/,+3d" \
+    | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)/,+3d" \
     | sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+box_fragment.rs:[0-9]\+)/,+3d" \
     | sed -e "/Too many open files/,+3d" \
+    | sed -e "/What finished? (.\+dom\/html\/htmllinkelement.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)/,+3d" \
@@ -33,7 +35,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Io(Os { code: 32, kind: BrokenPipe, message: \"Broken pipe\" }) (.\+components\/shared\/net\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"SendError(..)\" (.\+webrender\/src\/render_backend.rs:[0-9]\+)$/,+3d" \
@@ -41,7 +42,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/layout\/table\/layout.rs:[0-9]\+)$/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/shared\/compositing\/display_list.rs:[0-9]\+)$/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/shared\/paint\/display_list.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/internal error: entered unreachable code (.\+webrender\/src\/picture.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \
     ;
     if [ $? -eq 0 ]; then

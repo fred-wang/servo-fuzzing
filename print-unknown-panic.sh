@@ -24,18 +24,16 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Couldn't find common ancestor (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+box_fragment.rs:[0-9]\+)/,+3d" \
     | sed -e "/Too many open files/,+3d" \
-    | sed -e "/What finished? (.\+dom\/html\/htmllinkelement.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/already immutably borrowed (.\+atomic_refcell-[0-9]\+\.[0-9]\+\.[0-9]\+\/src\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/documentorshadowroot.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+dom\/window.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \
-    | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+prim_store\/image.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" \
+    | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl/webgl_thread.rs:[0-9]\+)/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: Io(Os { code: 32, kind: BrokenPipe, message: \"Broken pipe\" }) (.\+components\/shared\/net\/lib.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"SendError(..)\" (.\+webrender\/src\/render_backend.rs:[0-9]\+)$/,+3d" \

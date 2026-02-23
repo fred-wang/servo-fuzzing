@@ -25,7 +25,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)/,+3d" \
     | sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+box_fragment.rs:[0-9]\+)/,+3d" \
     | sed -e "/Too many open files/,+3d" \
-    | sed -e "/What finished? (.\+dom\/html\/htmllinkelement.rs:[0-9]\+)$/,+3d" \
     | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)/,+3d" \

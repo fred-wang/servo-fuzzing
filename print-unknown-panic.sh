@@ -33,7 +33,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: BoolError { message: \"Failed to link elements/,+3d" \
     | sed -e "/called \`Result::unwrap()\` on an \`Err\` value: \"element linking failed: BoolError/,+3d" \
-    | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/layout\/table\/layout.rs:[0-9]\+)$/,+3d" \
     | sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/shared\/paint\/display_list.rs:[0-9]\+)$/,+3d" \
     | grep -B5 -A10 'servoshell::panic_hook::panic_hook' \
     ;

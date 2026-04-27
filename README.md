@@ -39,7 +39,7 @@ To run all the HTML files with Servo in headless mode and generate corresponding
 `.txt` output:
 
 ```
-./run-testcases.sh testcases/ ./path/to/servo [servo_extra_args]
+./run-testcases.sh testcases/ ./path/to/servoshell [servo_extra_args]
 ```
 
 `--enable-experimental-web-platform-features` can be an interesting argument to
@@ -53,23 +53,23 @@ known panic messages from `.txt` output. Please keep this file updated.
 You can use [Lithium](https://github.com/MozillaSecurity/lithium/) to reduce a testcase, for example
 
 ```
-python3 -m lithium crashes -t1 ./path/to/servo -xzf testcase.html
+python3 -m lithium crashes -t1 ./path/to/servoshell -xzf testcase.html
 ```
 
 or to narrow down a specific panic message:
 
 ```
-python3 -m lithium outputs -t1 -s 'my panic message' ./path/to/servo -xzf testcase.html
+python3 -m lithium outputs -t1 -s 'my panic message' ./path/to/servoshell -xzf testcase.html
 ```
 
 There are also scripts to help reduce non-deterministic testcase more quickly:
 
 ```
-python3 -m lithium outputs -t3 -s 'my panic message' ./repeat.sh ./path/to/servo -xzf testcase.html
+python3 -m lithium outputs -t3 -s 'my panic message' ./repeat.sh ./path/to/servoshell -xzf testcase.html
 ```
 
 ```
-python3 -m lithium outputs -t3 -s 'my panic message' ./parallelize.sh ./path/to/servo -xzf testcase.html
+python3 -m lithium outputs -t3 -s 'my panic message' ./parallelize.sh ./path/to/servoshell -xzf testcase.html
 ```
 
 There are other Lithium options and semi-automated reduction tricks you can
@@ -81,7 +81,7 @@ be good enough.
 To generate a draft for the [GitHub issue tracker](https://github.com/servo/servo/issues), use the following command:
 
 ```
-./print-github-report.sh minimized-testcase.html ./path/to/servo [servo_args]
+./print-github-report.sh minimized-testcase.html ./path/to/servoshell [servo_args]
 ```
 
 Note that contrary to `./run-testcases.sh`, this does not pass the `--headless`

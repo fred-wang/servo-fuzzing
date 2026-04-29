@@ -25,8 +25,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     | sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)/,+3d" \
     | sed -e "/Should always have a StackingContextTree for offset parent queries (.\+components\/layout\/layout_impl.rs:[0-9]\+)/,+3d" \
     | sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+box_fragment.rs:[0-9]\+)/,+3d" \
-    | sed -e "/assertion failed: !self.loader.borrow().events_inhibited() (.\+dom\/document.rs:[0-9]\+)/,+3d" \
-    | sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document.rs:[0-9]\+)/,+3d" \
+    | sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)/,+3d" \
     | sed -e "/assertion failed: src.width == map.width && src.width == dest.width/,+3d" \
     | sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)/,+3d" \
     | sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+nodelist.rs:[0-9]\+)$/,+3d" \

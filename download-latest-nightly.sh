@@ -5,4 +5,5 @@ URL=https://download.servo.org/nightly/linux/$FILENAME
 
 rm -rf $FILENAME
 wget $URL
+rm -rf servo
 tar -xvzf $FILENAME

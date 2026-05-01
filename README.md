@@ -76,12 +76,26 @@ There are other Lithium options and semi-automated reduction tricks you can
 apply to get a smaller/cleaner repro, but the above commands should generally
 be good enough.
 
-## Reproducing issues reported to GitHub
+## Reporting issues
+
+To generate a draft for the [GitHub issue tracker](https://github.com/servo/servo/issues), use the following command:
+
+```
+./print-github-report.sh minimized-testcase.html ./path/to/servoshell [servo_args]
+```
+
+Note that contrary to `./run-testcases.sh`, this does not pass the `--headless`
+argument by default. Please specify it explicitly if it is needed to reproduce
+the crash.
+
+## Reproducing previously-reported issues
 
 Copy the reported testcase in a `testcase.html` file and run the following
 command:
 
+```
 ./path/to/servoshell -xf testcase.html
+```
 
 The report may indicate extra command line parameters to provide, such as
 `--enable-experimental-web-platform-features` or`-z`/`--headless`.
@@ -89,17 +103,22 @@ The report may indicate extra command line parameters to provide, such as
 For flaky test cases, you can use `repeat.sh` or `parallelize.sh` scripts
 to repeat executions in order to reproduce more easily, for instance:
 
+```
 ./repeat.sh ./path/to/servoshell -xzf testcase.html # repeat 10 times.
 ./parellize.sh ./path/to/servoshell -xzf testcase.html # execute 10 times in parallel.
 ./repeat.sh ./parellize.sh ./path/to/servoshell -xf testcase.html # repeat 10 times the 10 parallel executions.
+```
 
-By default these scripts use a COUNT of 10, feel free to increase if necessary.
+By default these scripts use a `COUNT` of 10, feel free to increase it if
+necessary.
 
 Finally `reproduce.sh` is a handy script that performs 10 repetitions of 100
 parallel executions and calculates a reproducibility estimate. Its first
 argument is the regexp passed to `egrep` when the output is tested. For example
-for issue #36850 we get something like this:
+for [issue #36850](https://github.com/servo/servo/issues/36850) we get
+something like this:
 
+```
 ./reproduce.sh "Cache should have been filled from traversal" ./path/to/servoshell -xzf testcase.html
 1/10: running  instances in parallel...
 2/10: running  instances in parallel...
@@ -112,15 +131,4 @@ for issue #36850 we get something like this:
 9/10: running  instances in parallel...
 10/10: running  instances in parallel...
 Reproducibility: 15%
-
-## Reporting issues
-
-To generate a draft for the [GitHub issue tracker](https://github.com/servo/servo/issues), use the following command:
-
 ```
-./print-github-report.sh minimized-testcase.html ./path/to/servoshell [servo_args]
-```
-
-Note that contrary to `./run-testcases.sh`, this does not pass the `--headless`
-argument by default. Please specify it explicitly if it is needed to reproduce
-the crash.

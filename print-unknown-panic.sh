@@ -38,6 +38,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36870
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
+    sed -e "/called \`Result::unwrap()\` on an \`Err\` value: HierarchyRequest(Some(\"Parent has an element child\")) (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/20218
+    sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+components\/script\/dom\/element\/attributes\/storage.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44714
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
     sed -e "/internal error: entered unreachable code: Found hoisted box with missing fragment. (.\+components\/layout\/display_list\/stacking_context.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44540
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';

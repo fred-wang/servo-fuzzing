@@ -11,7 +11,7 @@ for i in $(seq 1 $REPEAT_COUNT); do
   echo "$i/$REPEAT_COUNT: running $PARALELL_COUNT instances in parallel...";
 
   for j in $(seq 1 $PARALLEL_COUNT); do
-    "${@:2}" 2>$TMP_FILE_PREFIX-$i-$j &
+    "${@:2}" &>$TMP_FILE_PREFIX-$i-$j &
   done
 
   sleep $TIMEOUT
@@ -34,4 +34,4 @@ for i in $(seq 1 $REPEAT_COUNT); do
   done
 done
 
-echo "Reproducibility: $(($REPRODUCED_COUNT/$REPEAT_COUNT))%"
+echo "Reproducibility: $REPRODUCED_COUNT/$(($PARALLEL_COUNT*$REPEAT_COUNT)) ($(($REPRODUCED_COUNT/$REPEAT_COUNT))%)"

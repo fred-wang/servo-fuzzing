@@ -30,9 +30,11 @@ fi
 for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file |
     sed -e "/Cache should have been filled from traversal (.\+components\/media\/audio\/graph.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36850
+    sed -e "/Must always have a parent (.\+components\/script\/dom\/execcommand\/commands\/delete.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44742
     sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42414
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
     sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+components\/layout\/fragment_tree\/box_fragment.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/41207
+    sed -e "/assertion failed: !self\.aborted.get() (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44720
     sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42854
     sed -e "/assertion failed: src\.\(width\|height\) == map\.\(width\|height\) && src\.\(width\|height\) == dest\.\(width\|height\) (.\+displacement_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/38849
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292

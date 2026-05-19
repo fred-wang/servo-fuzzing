@@ -33,12 +33,14 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42414
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
     sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+components\/layout\/fragment_tree\/box_fragment.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/41207
+    sed -e "/already mutably borrowed (.\+src\/lib.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44990
     sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42854
     sed -e "/assertion failed: src\.\(width\|height\) == map\.\(width\|height\) && src\.\(width\|height\) == dest\.\(width\|height\) (.\+displacement_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/38849
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/point.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36870
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
     sed -e "/called \`Result::unwrap()\` on an \`Err\` value: HierarchyRequest(Some(\"Parent has an element child\")) (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/20218
+    sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+style\/servo\/animation.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45008
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then

@@ -41,6 +41,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/assertion \`left == right\` failed$/,+5d" | # https://github.com/servo/servo/issues/45167
     sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42854
     sed -e "/assertion failed: src.width == dest.width && src.height == dest.height (.\+src\/filter\/lighting.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45171
+    sed -e "/assertion failed: src1.\(width\|height\) == src2.\(width\|height\) && src1.\(width\|height\) == dest.\(width\|height\) (.\+src\/filter\/composite.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45175
     sed -e "/assertion failed: src\.\(width\|height\) == map\.\(width\|height\) && src\.\(width\|height\) == dest\.\(width\|height\) (.\+displacement_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/38849
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/alpha_runs.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45168

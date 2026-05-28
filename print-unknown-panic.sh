@@ -34,10 +34,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
     sed -e "/Should always have at least one SharedInlineStyles (.\+components\/layout\/flow\/inline\/construct.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45085
     sed -e "/Should have at least one SharedInlineStyle for the root of an IFC (.\+components\/layout\/flow\/inline\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45172
-    sed -e "/Should never call this before any glyphs have been added. (.\+components\/fonts\/glyph.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45174
     sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+components\/layout\/fragment_tree\/box_fragment.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/41207
     sed -e "/Trying to collect rules for a detached pseudo-element (.\+style\/dom.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45170
-    sed -e "/already mutably borrowed (.\+src\/lib.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44990
     sed -e "/assertion \`left == right\` failed$/,+5d" | # https://github.com/servo/servo/issues/45167
     sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42854
     sed -e "/assertion failed: src.width == dest.width && src.height == dest.height (.\+src\/filter\/lighting.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45171

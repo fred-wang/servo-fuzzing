@@ -48,6 +48,18 @@ pass if you want to test fuzz experimental web platform features.
 The bash script will run `print-unknown-panic.sh` at the end, which filters out
 known panic messages from `.txt` output. Please keep this file updated.
 
+## Combining generating and runing test cases
+
+Assuming you `servoshell` was downloaded at `./servo/servoshell` by the
+`download-latest-nightly.sh` and enabling experimental web platform features,
+combined commands look like this:
+
+```
+mkdir -p testcases; rm testcases/* ; python domato/generator.py -o testcases/ -n 100 ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+mkdir -p testcases; rm testcases/* ; python freedom/main.py -i 1 -m generate -n 100 -o testcases ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+mkdir -p testcases; rm testcases/* ; export MEM_DEP_JSON_PATH=Minerva/mod_ref_helper/mem_dep.json; python Minerva/generator.py --output_dir testcases --no_of_files 100; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+```
+
 ## Reducing test cases
 
 You can use [Lithium](https://github.com/MozillaSecurity/lithium/) to reduce a testcase, for example

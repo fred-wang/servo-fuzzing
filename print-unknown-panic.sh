@@ -32,8 +32,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/Cache should have been filled from traversal (.\+components\/media\/audio\/graph.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36850
     sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42414
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
-    sed -e "/Should always have at least one SharedInlineStyles (.\+components\/layout\/flow\/inline\/construct.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45085
-    sed -e "/Should have at least one SharedInlineStyle for the root of an IFC (.\+components\/layout\/flow\/inline\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45172
     sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+components\/layout\/fragment_tree\/box_fragment.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/41207
     sed -e "/Trying to collect rules for a detached pseudo-element (.\+style\/dom.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45170
     sed -e "/assertion \`left == right\` failed$/,+5d" | # https://github.com/servo/servo/issues/45167

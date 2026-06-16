@@ -43,6 +43,7 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
     sed -e "/called \`Result::unwrap()\` on an \`Err\` value: HierarchyRequest(Some(\"Parent has an element child\")) (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/20218
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
+    sed -e "/entered unreachable code: Unexpected direct descendant PositioningContext of inline. (.\+components\/layout\/display_list\/paint_traversal.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"

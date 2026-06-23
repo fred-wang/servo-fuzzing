@@ -29,6 +29,7 @@ fi
 
 for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file |
+    sed -e "/!will_break (.\+components\/layout\/flow\/inline\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45793
     sed -e "/Cache should have been filled from traversal (.\+components\/media\/audio\/graph.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36850
     sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42414
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
@@ -42,10 +43,13 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/alpha_runs.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45168
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
+    sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45794
     sed -e "/called \`Result::unwrap()\` on an \`Err\` value: HierarchyRequest(Some(\"Parent has an element child\")) (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/20218
+    sed -e "/called \`Result::unwrap()\` on an \`Err\` value: TryFromIntError(()) (.\+taffy\/stylo_taffy\/convert.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45881
     sed -e "/entered unreachable code: Unexpected direct descendant PositioningContext of inline. (.\+components\/layout\/display_list\/paint_traversal.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
     sed -e "/internal error: entered unreachable code (.\+src\/tile_cache\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
+    sed -e "/internal error: entered unreachable code: Tried to remove unknown id or name entry: x36 (.\+components\/script\/dom\/tree_ordered_index_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45792
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"

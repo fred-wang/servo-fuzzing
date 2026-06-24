@@ -49,6 +49,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/entered unreachable code: Unexpected direct descendant PositioningContext of inline. (.\+components\/layout\/display_list\/paint_traversal.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
     sed -e "/internal error: entered unreachable code (.\+src\/tile_cache\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
+    sed -e "/OriginZero grid line cannot be more than the number of positive grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45938
+    sed -e "/OriginZero grid line cannot be less than the number of negative grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45939
     sed -e "/internal error: entered unreachable code: Tried to remove unknown id or name entry: x36 (.\+components\/script\/dom\/tree_ordered_index_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45792
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then

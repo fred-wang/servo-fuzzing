@@ -44,7 +44,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/alpha_runs.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45168
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45794
-    sed -e "/called \`Result::unwrap()\` on an \`Err\` value: HierarchyRequest(Some(\"Parent has an element child\")) (.\+components\/script\/dom\/servoparser\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/20218
     sed -e "/called \`Result::unwrap()\` on an \`Err\` value: TryFromIntError(()) (.\+taffy\/stylo_taffy\/convert.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45881
     sed -e "/entered unreachable code: Unexpected direct descendant PositioningContext of inline. (.\+components\/layout\/display_list\/paint_traversal.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
     sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476

@@ -31,26 +31,24 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file |
     sed -e "/!will_break (.\+components\/layout\/flow\/inline\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45793
     sed -e "/Cache should have been filled from traversal (.\+components\/media\/audio\/graph.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/36850
-    sed -e "/PainterSurfmanDetails not found for PainterId (.\+components\/webgl\/webgl_thread.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42414
+    sed -e "/NaN should be between 0 and 1 (.\+src\/color.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45945
+    sed -e "/OriginZero grid line cannot be less than the number of negative grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45939
+    sed -e "/OriginZero grid line cannot be more than the number of positive grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45938
     sed -e "/Parsing shouldn't fail as descriptors are valid by construction: Syntax(None) (.\+components\/script\/dom\/css\/fontface.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/44537
-    sed -e "/Should only call \`scrollable_overflow()\` after calculating overflow (.\+components\/layout\/fragment_tree\/box_fragment.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/41207
-    sed -e "/assertion \`left == right\` failed$/,+5d" | # https://github.com/servo/servo/issues/45167
+    sed -e "/assertion failed: \*progress > 1. (.\+style\/servo\/animation.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45950
     sed -e "/assertion failed: count_cell.get() > 0 (.\+components\/script\/dom\/document\/document.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42854
+    sed -e "/assertion failed: self.inclusive_ancestors(shadow_including).any(|ancestor|$/,+4d" | # https://github.com/servo/servo/issues/45947
     sed -e "/assertion failed: src.width == dest.width && src.height == dest.height (.\+src\/filter\/lighting.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45171
     sed -e "/assertion failed: src1.\(width\|height\) == src2.\(width\|height\) && src1.\(width\|height\) == dest.\(width\|height\) (.\+src\/filter\/composite.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45175
     sed -e "/assertion failed: src\.\(width\|height\) == map\.\(width\|height\) && src\.\(width\|height\) == dest\.\(width\|height\) (.\+displacement_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/38849
+    sed -e "/attempt to \(substract\|add\) with overflow (.\+compute\/grid\/types\/.\+.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45949
     sed -e "/bug: this is an unexpected case - please open a bug and talk to #gfx team! (.\+src\/spatial_tree.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45732
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/alpha_runs.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45168
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42258
-    sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+style\/matching.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45794
     sed -e "/called \`Result::unwrap()\` on an \`Err\` value: TryFromIntError(()) (.\+taffy\/stylo_taffy\/convert.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45881
     sed -e "/entered unreachable code: Unexpected direct descendant PositioningContext of inline. (.\+components\/layout\/display_list\/paint_traversal.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
-    sed -e "/internal error: entered unreachable code (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42476
     sed -e "/internal error: entered unreachable code (.\+src\/tile_cache\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45740
-    sed -e "/OriginZero grid line cannot be more than the number of positive grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45938
-    sed -e "/OriginZero grid line cannot be less than the number of negative grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45939
-    sed -e "/internal error: entered unreachable code: Tried to remove unknown id or name entry: x36 (.\+components\/script\/dom\/tree_ordered_index_map.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45792
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"

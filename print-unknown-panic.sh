@@ -37,7 +37,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+euclid-0.22.14\/src\/size.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46202
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+taffy-0.11.0\/src\/compute\/grid\/types\/cell_occupancy.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46203
-    sed -e "/called \`Result::unwrap()\` on an \`Err\` value: TryFromIntError(()) (.\+taffy\/stylo_taffy\/convert.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45881
     sed -e "/panic: index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
     sed -e "/slice index starts at [0-9]\+ but ends at [0-9]\+ (.\+grid\/types\/grid_item.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46022
     sed -e "/unable to map mix-blend content into parent (.\+src\/picture_composite_mode.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292

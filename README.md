@@ -55,9 +55,9 @@ Assuming you `servoshell` was downloaded at `./servo/servoshell` by the
 combined commands look like this:
 
 ```
-mkdir -p testcases; rm testcases/* ; python domato/generator.py -o testcases/ -n 100 ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
-mkdir -p testcases; rm testcases/* ; python freedom/main.py -i 1 -m generate -n 100 -o testcases ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
-mkdir -p testcases; rm testcases/* ; export MEM_DEP_JSON_PATH=Minerva/mod_ref_helper/mem_dep.json; python Minerva/generator.py --output_dir testcases --no_of_files 100; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+mkdir -p testcases; rm -f testcases/* ; python domato/generator.py -o testcases/ -n 100 ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+mkdir -p testcases; rm -f testcases/* ; python freedom/main.py -i 1 -m generate -n 100 -o testcases ; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
+mkdir -p testcases; rm -f testcases/* ; export MEM_DEP_JSON_PATH=Minerva/mod_ref_helper/mem_dep.json; python Minerva/generator.py --output_dir testcases --no_of_files 100; ./run-testcases.sh testcases/ ./servo/servoshell --enable-experimental-web-platform-features
 ```
 
 ## Reducing test cases

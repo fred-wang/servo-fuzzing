@@ -38,7 +38,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46338
     sed -e "/panic: index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
     sed -e "/slice index starts at [0-9]\+ but ends at [0-9]\+ (.\+grid\/types\/grid_item.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46022
-    sed -e "/unable to map mix-blend content into parent (.\+src\/picture_composite_mode.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"

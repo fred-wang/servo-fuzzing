@@ -49,3 +49,4 @@ done
 # Below are some issues that have been hit by fuzzers in the past, but for which we don't have a reliable test case:
 # JS String copy routine failed mozjs-0.17.0/src/conversions.rs:676 # https://github.com/servo/servo/issues/46197
 # called `Option::unwrap()` on a `None` value (thread Script#1, at components/script/dom/node/node.rs:1715
+# internal error: entered unreachable code (thread Script#1, at components/script/dom/node/node.rs:788 https://github.com/servo/servo/issues/45795

@@ -36,7 +36,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+euclid-0.22.14\/src\/size.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46202
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+taffy-0.11.0\/src\/compute\/grid\/types\/cell_occupancy.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46203
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46338
-    sed -e "/panic: index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
+    sed -e "/Unstyled layout node? (.\+components\/script\/layout_dom\/servo_layout_element.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46883
+    sed -e "/index out of bounds: the len is [0-9]\+ but the index is [0-9]\+ (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
     sed -e "/slice index starts at [0-9]\+ but ends at [0-9]\+ (.\+grid\/types\/grid_item.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46022
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then

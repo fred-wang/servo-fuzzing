@@ -33,7 +33,6 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/OriginZero grid line cannot be less than the number of negative grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45939
     sed -e "/OriginZero grid line cannot be more than the number of positive grid lines (.\+grid\/types\/coordinates.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45938
     sed -e "/attempt to \(substract\|add\) with overflow (.\+compute\/grid\/types\/.\+.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45949
-    sed -e "/bug: unable to map mix-blend content into parent (.\+src\/picture.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/42292
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+euclid-0.22.14\/src\/size.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46202
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+taffy-0.11.0\/src\/compute\/grid\/types\/cell_occupancy.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46203
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46338

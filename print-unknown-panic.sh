@@ -34,7 +34,8 @@ for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     sed -e "/attempt to add with overflow (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
     sed -e "/bug: unable to map mix-blend content into parent (.\+picture_composite_mode.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47148
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+euclid-0.22.14\/src\/size.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46202
-    sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/rect.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46338
+    sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/alpha_run.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47335
+    sed -e "/internal error: entered unreachable code: Should always be able to extend the selection. (.\+components\/script\/dom\/execcommand\/commands\/inserthorizontalrule.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47333
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"

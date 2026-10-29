@@ -29,21 +29,12 @@ fi
 
 for file in $(ls $TESTCASE_DIRECTORY/*.txt); do
     cat $file |
-    sed -e "/!will_break (.\+components\/layout\/flow\/inline\/mod.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/45793
-    sed -e "/Must always have an active range (.\+components\/script\/dom\/execcommand\/contenteditable\/node.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47150
-    sed -e "/attempt to add with overflow (.\+compute\/grid\/types\/named.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46234
-    sed -e "/bug: unable to map mix-blend content into parent (.\+picture_composite_mode.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47148
+    sed -e "/assertion failed: parent_proxy.currently_active().is_some() (.\+components\/script\/dom\/window\/windowproxy.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/49411
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+euclid-0.22.14\/src\/size.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/46202
     sed -e "/called \`Option::unwrap()\` on a \`None\` value (.\+tiny-skia-path-0.12.0\/src\/alpha_run.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47335
-    sed -e "/internal error: entered unreachable code: Should always be able to extend the selection. (.\+components\/script\/dom\/execcommand\/commands\/inserthorizontalrule.rs:[0-9]\+)$/,+3d" | # https://github.com/servo/servo/issues/47333
     grep -B5 -A10 'servoshell::panic_hook::panic_hook';
     if [ $? -eq 0 ]; then
         echo -n $file | sed "s/.txt//"
         echo " crashed!"
     fi
 done
-
-# Below are some issues that have been hit by fuzzers in the past, but for which we don't have a reliable test case:
-# JS String copy routine failed mozjs-0.17.0/src/conversions.rs:676 # https://github.com/servo/servo/issues/46197
-# called `Option::unwrap()` on a `None` value (thread Script#1, at components/script/dom/node/node.rs:1715
-# internal error: entered unreachable code (thread Script#1, at components/script/dom/node/node.rs:788 https://github.com/servo/servo/issues/45795
